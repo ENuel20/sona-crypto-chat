@@ -1,5 +1,3 @@
-"use client"
-
 import type { ReactNode } from "react"
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base"
 import { PhantomWalletAdapter, SolflareWalletAdapter } from "@solana/wallet-adapter-wallets"
@@ -26,13 +24,15 @@ const endpoint = clusterApiUrl(network)
 // List of wallets to support
 const wallets = [new PhantomWalletAdapter(), new SolflareWalletAdapter()]
 
+export const metadata = {
+  title: 'Sona Crypto Chat',
+  description: 'Advanced cryptocurrency AI assistant with wallet integration',
+  generator: 'v0.dev'
+}
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <title>Grok 3 by xAI - Crypto Assistant</title>
-        <meta name="description" content="Advanced cryptocurrency AI assistant with wallet integration" />
-      </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <ConnectionProvider endpoint={endpoint}>
@@ -60,11 +60,3 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   )
 }
-
-
-
-import './globals.css'
-
-export const metadata = {
-      generator: 'v0.dev'
-    };
